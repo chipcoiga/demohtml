@@ -1,0 +1,14 @@
+var http = require("http");
+
+var options = {
+  host: "donkey.cybersoft.vn",
+  port: 8080,
+  path: "http://getfsharelink.herokuapp.com"
+};
+http.get(options, function(res) {
+  console.log(res);
+  res.on('data', (chunk) => {
+    console.log(`BODY: ${chunk}`);
+  });
+//   res.pipe(process.stdout);
+});
