@@ -1,0 +1,725 @@
+
+
+
+I have four composition in the 4 number below by 4 used as requirements called the number of use users, and 200 simultaneous connection [ 50 ]. In addition, test environment is also needed according to acting-before-the-audience operational environment and a. By DB server a schema division, I do as the premise which carves the object for full employment, and test environment. 
+
+Acting-before-the-audience environmental Web/AP server   x1 
+Acting before the audience, test combination DB server   x1 
+Web/AP server for a test   x1 
+
+Operational environment   Test environment 
+
+
+
+
+
+
+WEB/AP server   	DB server   	WEB/AP server 
+
+
+
+
+
+
+
+ 
+User terminal 
+(Only PC)   
+ 
+Administrator terminal 
+(Only PC)   
+ 
+
+*     I assume 4 environment for 4 evaluations at the time of the test environment a and the Update of system 4. 
+* Do not redundant-configuration a Contain above. 
+* Do not backup employment 4 estimated a Contain. 
+* inquire in a your company about a redundant configuration and backup employment -- ? れ It is happy. 
+
+*    I do as corresponding with one initial employment aWEB/AP server composition as a result of [ 4 deliberation 4 ] your company. 
+ 
+
+
+
+Hereafter, it becomes a development assumption Function. 
+
+3-1. Correspondence Functional Outline 
+
+3-1-1. Routine Work (General User) Functional Flow 
+Browser operation 
+
+Login   Housing copy 
+
+
+ 
+
+Housing Search 
+ 
+Automatic controller   Apparatus selection 
+ 
+
+ 
+
+
+Housing 'system   Register' edit 
+ 
+
+
+Cost of construction   Input 
+ 
+
+Filder and P's Cooperation CSV 
+ 
+
+
+
+ 
+
+Estimated detailed creation   Estimate creation 
+ 
+Estimate creation 
+ 
+
+
+ 
+
+Excel operation 
+ 
+Cost control table creation 
+ 
+
+
+Monitoring instrument   Selection 
+
+
+Control panel' remote board   Selection 
+ 
+
+I have judged a present condition 4Excel input and equivalent 4 operativity that offer is possible also on the automatic controller and cost-of-construction 4 selection a and a browser screen. Moreover, the way which needed to develop also to the browser screen and collected the Function to edit a selection result, on the browser screen also in respect of cost has a merit. When monitoring instrument selection, the control panel' remote board selection a, and this Function are mounted in a browser screen, it is in operativity and a cost side that four demerits are large.   I judge and do as 4 correspondences towards extending a present condition 4Excel input. 
+
+therefore, following 4 operation carving -- 4 -- you estimate. 
+
+Automatic controller apparatus selection, cost-of-construction selection   '''    Browser screen input   Monitoring instrument selection, control panel' remote board selection   '''    Excel input 
+
+In addition, I mount by following 4 specification which contains the feeling of operation near a and Excel about automatic controller apparatus selection and cost-of-construction selection. 
+
+' Singleness, two or more line copy, cutoff, attachment, line cut   However, it becomes the operation as which you choose two or more line operation a and an object line in a check box. 
+'    The item copy, the cutoff, the attachment, the Delete to the item input and cell to a cell 
+' Each 列幅 4 Change (however, when a browser is rebooted, it returns to the initial width of a) 
+'    The line insertion by a right-click menu, Delete 
+
+'       the key item (article No. etc.) 4 Search to a line -- on the way -- an input sentence character is received -- auto-complete 
+'       Accompanying information (Product Name etc.) 4 automatic entry to the key items (article No. etc.) over a line 
+
+* Strike Excel operation 4 and it becomes the operation which is [ a reappearance ] impossible in an operation a browser below. 
+' It moves 4 cell using a cursor key. 
+'Ctrl A a Shift key is used again and it is two or more 4 line selection. 
+' A Column Delete, Display Column 4 exchange 
+' Filtering function 
+'    Sorting (Excel4 -- it needs -- high efficiency a realization cannot do) 
+' Shortcut key 4 use 
+' Input screen 4 Print 
+'    Cell 4 coloring, a character font, size 4 Change 
+' -- line Unit 4 exchange operation (an exchange button is created and it is operated with a button) the thing a for which Excel4 操作そ 4 also expresses 4 on a browser -- also being related with four Function by 4 which becomes impossible except the above -- browser top   Not reproducible operation may occur. 
+そ 4 case -- " -- correspondence a improper" I have you fully scrutinize about the above-mentioned Content by 4 which becomes the correspondence "a correspondence is impossible at four schedule and expense this time", and there needs to be unknown operation -- please announce beforehand [ ? ]. 
+
+* being related with screen changes -- a -- it becomes provisional. Separately, I scrutinize in a requirement definition phase. 
+
+
+1)  Login 
+
+A user master is created within a new addition system. I manage information, including a, a user Full Name, authority, affiliation, etc., required for this system to a user master. 
+
+Four procedure performs attestation processing below. 
+
+1)  Perform a new addition system 4 user master and input ID4 matching. 
+2)        When it succeeds in 4 matching by 1, connect with a LDAP server and perform input ID and Password 4 matching to a LDAP server. 
+3)     When it succeeds in the above-mentioned attestation, acquire various user information and four operation is enabled henceforth. 
+
+Using the user affiliation information acquired at the time of login attestation, amount-of-money Calculate 4 unit price is performed, and a 歩掛 change is made. 
+
+
+2)  Menu 
+
+The menu which performs 4 changes to various Functions is created. use restrictions are prepared by [, such as an administrator Function, / with specific 4 authority ] seeing user 4 and changing Function a menu 4 Display and un-displaying. [ which can be used ] 
+ 
+
+3)      Housing controlling function (housing 'system Register' correction, a housing Search, housing copy) 
+
+The housing controlling function used as estimated 4 parent information is created. I do as talking in a and a requirement definition phase about a control item. 
+
+[The main Functions of a housing controlling function] 
+? Housing 4 Register New 
+Housing information is inputted newly. The "system" which is an estimated creation Unit is registered. 4 distance rank for adjustment expense and engineering expense calculation is also registered. 
+The rate of 4 credit classified by distance rank is master-ized, and no less than four Changes are manually enabled after an Initial Setting. 
+'Near' short distance area 
+' Long distance area 
+' 遠々 distance area 
+? Estimated Add 
+It changes to estimated creation operation. moreover, the structure which comes out of a 4 input Excel file at the time of estimated creation, and can be registered into a server (upload, download) is also created. 
+?  Estimated number 4 automatic 採番 
+ 
+I decide on a 採番 rule and automatic-採番-do an estimated number. 
+? An Important Note, exception   The Important Note and exception which are written in an estimate are registered. 
+ 
+User 
+ 
+It is considered as 4 採番 in appearance and a 販 Co. Mr. Unit. 
+ 
+It is considered as the operation which makes manual correction after choosing the data of which purport-of-a-letter a patternizing (master-izing) was done. 
+? The Change for an estimate 
+It is considered as four operations in the Change a for an estimate, and following 4 procedure. 
+ 
+User 
+ 
+By person-in-charge Mr. 4 operations, an open good Setting and a public presentation place are specified to a housing. 
+ 
+The public presentation place 4 specified person in charge opens an applicable housing, and he performs estimated operation to a duplication affair after a housing copy. 
+? System estimated copy 
+It is considered as four operations in the system estimated copy a and following 4 procedure. 
+
+ 
+Housing' system   Search 
+ 
+
+Line selection   Apparatus name selection   Apparatus parts   Selection 
+ 
+Another per parts   It copies to a housing. 
+ 
+
+
+ 
+In a system Unit   It copies for a different-thing affair. 
+ 
+In an apparatus name Unit   It copies for a different-thing affair. 
+ 
+
+* Also unite and copy a 紐づく cost of construction on parts. (It becomes front [ copied material information 4 merge ] 4 amount-of-money 4 copy)   
+* No less than four copies are enabled by a cost-of-construction independent. (It scrutinizes at the time of the requirement definition for hierarchy a applicable to an apparatus name and parts)   
+
+? Content of housing 4 Update 
+Change preservation of the created 4 housing information is carried out. 
+? Housing Delete 
+Created 4 housing information is deleted. it is considered as a Delete a logic Delete, and it sees specific 4 authority user 4, and reference is made possible. 
+? Housing copy 
+Created 4 housing information is copied as another 4 housings. The estimated information currently created by copy source 4 housing is also united and copied. 
+? Housing Search 
+4 for operation housing is searched. A list is displayed as a result of search condition 4 input, and it changes to various operations. 
+ 
+
+4)  Automatic controller apparatus selection 
+
+I use as a browser screen Excel and the equivalent 4 input Function which are used in the present input, and create them. 
+
+(9) ⑨ ⑨ 
+
+Cost sum total 	Label value sum total 	Attachment artificial meter 
+1,898,400 	5,933,800 	16.72 
+①② ③ ④ ⑤ ⑤ ⑥  ⑦  ⑧ ③ ⑧ ⑨ ⑨ ⑨ 	⑨
+		Apparatus name 	Apparatus form 	Cost unit 	Standard price 	歩掛 	Quantity 	Unit 	Maker 	Purchase place 	Cost subtotal 	Label value subtotal 	Attachment artificiality 
+□ 		Heat source butterfly valve   100A 	700G-41-100 	40,300 	286,100 	0.88 	4 	stand   ▼		  	161,200 	1,144,400 	3.52 
+? 		Heat source butterfly valve   200A 	700G-41-200 	76,900 	559,600 	0.88 	4 	stand   ▼		  	307,600 	2,238,400 	3.52 
+□ 		The temperature sensor for piping 	EK-A-010K 	14,400 	72,000 	0.88 	9 	stand   ▼		  	129,600 	648,000 	7.92 
+□ 		Electromagnetic flowmeter   150A 	EGMA4100C-150A 	500,000 	713,000 	0.88 	1 	stand   ▼		  	500,000 	713,000 	0.88 
+□ 		Electromagnetic flowmeter   200A 	EGMA4100C-200A 	800,000 	1,190,000 	0.88 	1 	stand   ▼		  	800,000 	1,190,000 	0.88 
+□ 								  		  	0 	0 	0.00 
+
+Four operations are actually enabled per four 4 screen operation a, apparatus name, and apparatus name subordinate 4 parts. 
+(1) Register an apparatus name two or more affairs. 
+②    Add parts to an apparatus name. (The screen 4 above-mentioned image)   
+③      Correspond to four copies and attachment operation per four copies, attachment, and parts per apparatus name in a screen. 
+* Operate the above-mentioned Function in 1 screen, or I use apparatus name and part 4 operation as another screen, or scrutinize at the time of the requirement definition for a. Below the above-mentioned screen 4 operation image a is four kinds. 
+①   It is line 4 for 4 operations selection at the time of two or more line operation. 
+(2) Choose four apparatus using a form Search screen. A Search screen is displayed as a child window. It is considered as about [ search condition a5 kind ] 4 item, and I assume truncation. 
+③   Carry out the database Search of the form at a key, and it is an automatic complement. 
+④   The auto-complete input by the Manual Input and a head character input. 
+⑤   Refer to the price master classified by affiliation, and it is amount-of-money automatic calculation. A manual correction is possible after automatic calculation. 
+⑥   Refer to the 歩掛 master classified by affiliation, and it is automatic entry. A manual correction is possible. 
+(7) Manual Input. 
+(8) Manual Input. Input method a alternative form. 
+(9) Use and calculate 4 in screen various numerical values automatically. In addition to the above, line exchange 4 operation is also made good. 
+
+The format 4Excel file used by screen 4 Content now is created. 
+
+By the above-mentioned operation, after creating automatic control apparatus 4 details, a sum total price is reflected in a Register and estimated detailed screen. Again, when it changes on this screen, it displays in the state of the last preservation the first stage. 
+
+* I am referring to four items of list item a present addition system. I actually four item-a-special-scrutinization-do. 
+
+5)  Monitoring instrument selection   *    It is satisfactory even if you except from an estimate. It is considered as four inputs using Excel. 
+4Bips-D[ in input form a present use ] x and an iTM42Excel file are used as [ そ 4 ]. 
+
+In order to use as a new addition system 4 input interface, 4 correspondence is performed below to 2Excel files. 
+
+? FourCSV file creation for new system taking in 
+?     Price master 4 reference method is changed so that a database server may be referred to directly. 
+(Since the price master is taken in in an Excel file)   
+
+*     It will be the requisite that it is possible to add correction to a present condition 4Excel file. 
+(Password protection of the VBA source file is carried out, and please confirm whether there is nothing)   
+* Do not 4Excel file restoration a Carry out from the result edited on the browser screen. 
+* I am considering it as the schedule of which input form a renewal is done. the new form a -- please provide. 
+ 
+
+6)   Control panel' remote board selection   *    It is satisfactory even if you except from an estimate. 
+
+It is considered as four inputs using Excel. FourExcel files are diverted during input form a present use. 
+
+In order to use as a new addition system 4 input interface, an operativity improvement is aimed at and 4 correspondence is performed below. 
+
+? They are series 4 Works about operation in which the book division is carried out and 4 copies & paste are needed between books now.   An operation interface is added so that it can be operated. 
+((To perform automatic posting and Calculate result 4 output by four operations, such as a button) Each book 4 sheet is collected in one book, and it enables it)   
+?     It changes so that the part a direct database server which is carrying out master reference may be referred to. 
+?    Software expense 4 inputs are performed and it enables it to be reflected in estimated details. 
+' The degree control of 還気温 
+' 還気 moisture control 
+'    Scrolling damper control by the air-supply side static pressure 
+' Interlock control 
+? FourCSV file creation for new system taking in 
+
+*     It will be the requisite that it is possible to add correction to a present condition 4Excel file. 
+(Password protection of the VBA source file is carried out, and please confirm whether there is nothing)   
+* Do not 4Excel file restoration a Carry out from the result edited on the browser screen. 
+
+
+7)  Cost-of-construction input 
+
+A browser screen is created in 4 operation image (it is a front input on a browser) like automatic controller apparatus selection. 
+
+ 
+
+
+
+①②③ ④ ⑤ 
+ 
+
+(7) Cost-of-construction meter 
+0 
+(6) ⑦ 
+ 
+actually -- four costs of construction 4 -- a kind part Column is created 
+(8) 
+ another system   from -- it outputted   file selection of the CSV is made -- it is reflected on a screen 
+ 
+
+
+
+①   It is line 4 for 4 operations selection at the time of two or more line operation. 
+(2) Choose 4 component using a 品番 Search screen. A Search screen is displayed as a child window. It is considered as about [ search condition a5 kind ] 4 item, and I assume truncation. 
+③   The auto-complete input by the Manual Input and a head character input. 
+④   Carry out the database Search of the 品番 at a key, and it is an automatic complement. 
+⑤   Refer to the 歩掛 master classified by affiliation, and it is automatic entry. A manual correction is possible. 
+(6) Manual Input. 
+(7) Use and calculate 4 in screen various numerical values automatically. 
+* a cost-of-construction 4 Display Column -- a -- create by four kinds of actually required costs of construction. 
+(8) Read on a screen the component list (CSV) which the exception outputted from system ().  A matching table is used, four another system No. is changed into the four-article No. for new addition systems, step exaggeration is acquired, and it is on a screen.   It displays. 
+
+The cost of construction computed from the apparatus inputted until now is displayed the first stage. The format 4Excel file used by screen 4 Content now is created. 
+
+By the above-mentioned operation, after creating cost-of-construction 4 details, a sum total price is reflected in a Register and estimated detailed screen. Again, when it changes on this screen, it displays in the state of the last preservation the first stage. 
+
+* the list item a -- it is provisional. I actually four item-a-special-scrutinization-do. 
+* Create the Function which merges a and the same Item about a cost of construction, and is made into one line (a Quantity, amount-of-money a total). It has before [ a ] a total, calculating agency 4 apparatus, and 4 string attachment, and deletes together with apparatus 4 Delete. synchronous a [ 4 ] Don't carry out with apparatus by 4 from which companion こ 4 string [ after / a / a total and ] is deleted. Moreover, it is considered as the thing which return to front [ total ] 4 Status (from configuration to four Recalculates) and which is not a Performed. 
+ 
+
+8)  Estimated detailed creation 
+
+4 changes and the total amount are displayed on various inputs (automatic controller apparatus selection, monitoring instrument selection, control panel' remote board selection, cost-of-construction input). Suppose "Content Change [ of estimated particulars 4 ] (line exchange, a Delete) a a and don't carry out" on this screen. 
+
+?    Various Input Values are used, and the 4 amount of money is also calculated and displayed below. 
+' Adjustment expense 
+' Engineering expense 
+' Expenses 
+' The expense a various legal welfare expense   above-mentioned various inputs (it and) [ automatic-controller-apparatus-] 
+Distance rank exception 4 coefficient inputted by a and a housing controlling function about adjustment expense and engineering expense is used monitoring instrument selection, control panel' remote board selection, and a cost-of-construction input result, and they are 4 four operations.   It is premised on being calculable. 
+Suppose that Calculate result a hand correction is made. 
+
+? Control panel' remote board selection   Since more than one correspond to field 4 estimate, it enables it to perform a 4th page of control panel' remote board selection number input. 
+
+The result of having performed the final adjustment on this screen is used, and an estimate is drawn up. Moreover, a cost control table also makes an output possible from this screen. 
+
+9)  Estimate creation   An estimate is drawn up by details which carried out the final adjustment by estimated detailed creation. It is considered as estimate a1 format. 
+*    Suppose estimate 4 details a and the inputted composition that Excel form is filled in as [ そ 4 ]. 
+
+? From maker 4 column a and login user information, affiliation information is retrieved and is changed dynamically. 
+
+?  control a [ 4 ] Suppose that you correspond in a and following 4 operation about a central monitoring instrument, and don't carry out by the system side. 
+(1) User       It needs. 
+' A central monitoring instrument is made into a system and added. 
+as opposed to the system of which '     Add was done -- control panel' -- remote board selection 4Excel is used and composition is added. 
+'     The unnecessary composition a besides そ 4 and details are not added. 
+(2) User        The company except appearance (販 Co.) 
+' Central monitoring instrument 4 composition is added to the system according to a housing. 
+Composition a control panel' remote board selection 4Excel is used. 
+
+? It is considered as output-file aExcel form. Suppose that it is kept on a creation estimate Excela server. I am considering it as assumption which downloads and uses the created estimate Excel file for operation PC. 
+
+
+10)  Cost control table creation 
+
+Cost control table creation is created in Excel form. 
+
+? Are generable using the information a required for cost control table creation, the input mentioned above, a Calculate result, and the master-ized coefficient.   It is considered as a premise. 
+
+? It is considered as output-file aExcel form. Suppose that it is kept on a creation cost control table Excela server. I am considering it as assumption which downloads and uses the created cost control table Excel file for operation PC. 
+
+
+11)  The Export CSV for orders 
+
+A CSV file is outputted to atlas cooperation. It is premised on being generable using the information a outputted to CSV, the input mentioned above, a Calculate result, and the master-ized coefficient. 
+ 
+3-1-2. System Management Business (Administrator) Functional Flow 
+
+* It becomes 4 only for administrator authority operation.  the unit price [ in connection with an estimate ], and coefficient (step credit) 4 maintenance a -- for affiliation companies, it sees 4 data 4 and an Update is made possible. 
+
+ 
+
+Login 
+ 
+User management   Function 
+ 
+
+User Search 
+ 
+User information Change   (authority, affiliation)   
+ 
+
+
+User information Delete 
+
+
+
+User registration 
+
+
+User information   Export 
+
+
+User information   Import 
+
+
+Master maintenance 
+Function   Various master corrections 
+
+
+1)  User management Function 
+
+Four user management Functions are created below. 
+
+? User information individual edit 
+' User Register New 
+'    User Search (a search condition input, a search-results list Display) 
+' User information Change 
+' User information Delete (logic Delete) 
+
+? User package edit function 
+'    User information package download (Excel form) 
+'    User information package upload (Excel form) 
+
+
+2)  Master maintenance Function 
+
+A master maintenance Function is created by four method below. 
+
+? It carries out by an input aExcel file and is reflected in a database after uploading an input file via a screen. The Excel sheet according to a master layout is created for every master. FourExcel files are downloaded with the time a of master amendment, and this layout, and please perform four above-mentioned operation after an Excel file update. 
+
+?   at the time of download, for login user 4 affiliation companies, it sees 4 data 4 and Excel-izes. 
+
+*    It is a "3-1-3. server environment management Function" about an operation image.     Please unite and confirm by 4 indicated to 2 master management. 
+ 
+3-1-3. server environment management Function 
+Above-mentioned 4 passage creates a 4 environmental synchronous tool below by 4 which prepares a server for the object for full employment, and test environment. 
+
+1)  Program module management 
+
+? Acting-before-the-audience operational environment and test environment add and update a patch file manually. From our company, I am considering it as assumption which corresponds in your company by 4 which presents a manual below. 
+(When [ a ] you can prepare the environment which can carry out remote connection from our company, it can respond in our company)   
+(1) Patch file 4 list and an arrangement folder 
+(2) They are the 4 reflection methods (the WEB/AP server 4 reboot method etc.) to a system. 
+* Manual-ize a procedure about  ②. 
+
+
+2)  Master management 
+
+It is operated using a master 4 test environment and acting-before-the-audience environmental 4 reflection a master maintenance screen. 
+
+[Master maintenance screen] 
+
+
+
+
+
+seeing file selection operation 4   It updates by the file name and a sheet name.   Four kinds of masters are distinguished and it is reflected in an object server. 
+
+* Test environment and acting-before-the-audience environment enable operation of the same Function. Reflection connects with 4TRL in required environment, and is considering it as assumption to operate. 
+
+It becomes below 4Excel file for maintenance 4 download operation a4 image. 
+
+
+
+
+It downloads.   Four kinds of masters are chosen. 
+
+
+
+
+
+Download is performed. 
+
+
+* Any 4 screen also becomes four examples in the other company. Development is needed for your company. 
+* it uses by a master maintenance Function -- please みと Excel4 version a20104. 
+ 
+
+3-1-4. Exclusive Control 
+
+It is considered as exclusive control a optimistic exclusive control. It confirms whether other 4 users change at the time of an Update and a Delete, when changed, a and an error dialog are displayed, and I make it cancel an Update and a Delete. 
+
+[The Content of processing] 
+
+1)  Screen Display 
+
+' A version is acquired.   When the "version" field is shown in the table used on each screen at the time of a screen Display, "version" 4 value is acquired.   It holds in the pictures. 
+* Good simultaneous at each table 4 acquisition processing at acquisition. 
+
+2)	INSERT processing 
+
+'       The Register New of the version is carried out. 
+When the "version" field is shown in the table which carries out a Register New, "1" is made into initial value and INSERT(ed). 
+
+3)	UPDATE processing 
+
+' A version is compared.   "Version" 4 value currently held in the pictures when the "version" field was shown in the table to update   Condition 4 data 4 "version" 4 value to update is compared. 
+(1) When version 4 value is the same   TPDATE processing is performed. 
+version 4 value a -- an increment is carried out.  (a which spreads "it is +14update to the acquired value" "it is 採番 at a sequence")   
+
+(2) When version 4 values differ 
+
+It is considered as an Update error and the message which cannot be updated is displayed on a screen. (Rollback)   
+
+4)	DELETE processing 
+
+' A version is compared.   "Version" 4 value currently held in the pictures when the "version" field was shown in the table to delete   Condition 4 data 4 "version" 4 value to delete is compared. 
+
+(1) When version 4 value is the same   DELETE processing is performed. 
+(2) When version 4 values differ 
+
+It is considered as a Delete error and the message which cannot be deleted is displayed on a screen. (Rollback)   
+
+* Part which compares four versions by TPDEATE processing and DELETE processing   It carries out before a, the table 4 Update of each, and a Delete fundamentally. However, control more than one exclusively 4 tables using the "cases a and synchronized" where more than one straddle 4 processing function. (Also perform a rollback and a commitment clearly)   
+(It is cautious of a deadlock)   
+ 
+
+
+
+4-1. Requirement Definition 
+Suppose that 4 results are data-ized below. 
+
+(1) Development functional list   4 for development Function is list-ized. 
+
+(2) Screen design / functional outline   The required Content of processing is adjusted and data-ized on four items of screen, a design, fundamental operation, and a screen. 
+
+(3) Various estimated rules   Various estimated rules are adjusted and data-ized. 
+
+(4) An output list, CSV list   An output list kind and a CSV kind are list-ized. 
+
+(5) List design / output outline   Four items of list and a design are adjusted and data-ized. 
+
+(6) Screen changes   Each 4 between screens changes are adjusted and data-ized. 
+
+(7) Server composition   The trial calculation of data volume etc. is made and final server composition is defined. 
+
+(8) Requirements for performance   A screen and list output 4 Unit define the guarantee data number of cases and the guarantee response time. 
+
+(9) Project plan   The measure against organization figure, development schedule, and risk factor' is defined. 
+The stakeholder relevant to this project including all the companies is created. 
+
+
+4-2. Basic Design' Detail Design 
+
+I am making a and following 4 design-specifications creation into the in-company standard in our company. Please understand the situation by 4 design-specifications creation below. 
+
+(1) A functional list, list'CSV list   A creation Function, a list, CSV, processing 4 list 
+
+(2) Screen transition diagram   Data in which screen changes were shown 
+
+(3) Screen design document   They are 4 processing specification and database access specification in the outline, the item specification, the operation specification, and the screen to a screen. 
+
+(4) A list, CSV specification   The outline, the item specification, the item generation rule, database access specification over a list 
+
+(5) Processing specification   Data which adjusted processing 4 specification when processing independent of a screen, a list, and CSV occurred 
+
+(6) Database design document   ER figure and item definition document 
+
+(7) System configuration definition document   The requirements for a server, the use software 4 list, the requirements for a client which carried out the last Decide 
+
+(8) Other system cooperation specifications   Other systems and data which adjusted 4 cooperation specification. 
+* It may write in a and a screen design document according to a description scale. 
+
+(9) System outline   Data which adjusted the specification over the whole system which cannot be written in each design specifications besides system 4 purpose, a use user, and そ 4 
+
+(10) Architecture, software structure   Partial 4 system explanation mounted with system 4 structure, the mounting method, and the special system 
+partial 4 adjustment a it is concerned with the general system development -- * don't carry out. 
+ 
+4-7. Review 
+
+being related with various design specifications -- all a principles -- it reviews to 4 design specifications. minutes creation a a review result is received -- don't carry out. I deliver design specifications directly reflecting a review result. 
+
+As a holding History, I deliver four list below. Object design specifications, an enforcing date, a participant, the Content Check person of correction, a date confirmed 
+
+I carry out in a and following 4 Unit about a source code. 
+
+(1) 1 time per person in charge   4 which checks 4 quality and validity per individual as a program to the last becomes the purpose. 
+
+(2) main screen   our paper -- main in 4 functional flow written 4 Unit -- it sees processing partial 4 and reviews. It is aimed at plug ram 4 validity whether there is any problem in connection with performance also here. 
+
+As a holding History, I deliver four list below. An object Function, an enforcing date, a participant 
+
+* I have judged that it can check in a design-specifications 4 review about specification 4 validity. 
+
+
+4-8. Check of Operativity Etc. 
+Together with Operativity a and design-specifications 4 description, I am considering it as assumption which creates and checks モック. 
+ 
+
+
+
+6-1. Whole Items 
+
+Phase 1 
+NO 	Work Item Name 				備    考 
+1 	Requirement definition 				
+2 	Basic design' detail design 				
+3 	Environmental construction 				
+4 	the system development (phase 1)   				
+
+Phase 2 
+NO 	Work Item Name 				備    考 
+1 	the system development (phase 2)   				
+2 	examination (test specification creation 含む)   				
+3 	Manual 				
+4 	Systems configuration manual 				
+ 
+6-2. Development Items 
+
+Phase 1 
+NO 	Development item 			備    考 
+Routine work (general user) 
+1 	Common processing and framework maintenance 			
+2 	Login 			
+	2-1. Screen Development 			
+	2-2. Database Matching 			
+	2-3. LDAP Attestation 			
+	2-4. Login Information Acquisition' Possession 			
+3 	Menu 			
+	3-1. Screen Development 			
+	3-2. Authority, Display Control according to Section 			
+4 	Housing controlling function 			
+	4-1. Screen Development   Register New 			
+	4-2. System Register   Register New 			
+	4-3. Distance Rank Register' Edit    Register New 			
+	4-4. Estimated Add   Register New 			
+	4-5. Estimated Number Automatic 採番   Register New 			
+	4-6. Important Note, Exception     Register New 			
+	4-7. Change for Estimate 			
+	4-8. System Estimated Copy 			
+	4-9. Content of Housing 4 Update 			
+	4-10. Housing Delete 			
+	4-11. Housing Copy 			
+	4-12. Housing Search 			49-present item 4 Search item 4 み is assumed. 
+5 	Automatic controller apparatus selection 			
+	5-1. Main Screen Development 			
+	5-2. Grid Control 			
+	5-3. Apparatus Name Setting 			
+	5-4. Form Search Sub Screen 			
+	5-5. Excel File Creation 			
+6 	Monitoring instrument selection 			
+	6-1. Bips-DX DB Connection Correspondence 			
+	6-2. Bips-DX Export-CSV Correspondence 			
+	6-3. ITM DB Connection Correspondence 			
+	6-4. ITM Export-CSV Correspondence 			
+7 	Control panel' remote board selection 			
+	7-1. Book Macroscopic Integration 			
+	7-2. DB Connection Change 			
+	7-3. Export-CSV Correspondence 			
+	7-4. Software Expense 4 Input 			
+8 	Cost-of-construction input 			
+	8-1. Main Screen Development 			
+	8-2. Initial Display of Cost of Construction 			
+	8-3. Grid Control 			
+	8-4. 品番 Search Sub Screen 			
+	8-5. Filder CSV Cooperation (Article No. Conversion 含む) 			
+	8-6.P's CSV cooperation (article No. conversion 含む) 			
+	8-7. Cost-of-Construction Total 			
+	8-8. Excel File Creation 			
+9 	Estimated detailed creation 			
+	9-1. Main Screen Development 			
+	9-2. Monitoring Instrument CSV Import 			
+	9-3. Control Panel' Remote Board CSV Import 			
+	9-4. Adjustment Expense Calculate' Edit 			
+	9-5. Engineering Expense Calculate' Edit 			
+	9-6. Expenses Calculate' Edit 			
+	9-7. Legal Welfare Expense Calculate' Edit 			
+	9-8. Number Input of Control Panel' Remote Board Selection Sides 			
+10 	Estimate creation 			
+	10-1. Formation of List Excel 			
+	10-2. Output-Data Creation 			
+	10-3. Content Change of Submitting Agency Information Classified by Person in Charge 			
+ 
+7. Schedule 
+There is fear of change by order time. 
+
+ 
+No Work item   Main charge   Phase 1 
+ 
+September   October 
+ 
+November   December 
+ 
+January   February   March 
+ 
+April   May 
+ 
+June   July   August 
+ 
+1  Requirement Definition 
+ 
+Two persons   EndUser + Developer 
+ 
+
+2  Basic' Detail Design   Two Persons 
+No.7 
+
+3  Basic' Detail Design   One Person 
+Except No.7 
+
+4  Environmental Construction   One Person 
+Tuning 
+
+5  System Development   Three Persons 
+Phase 1 
+
+6  System Delivery of Goods   Phase 1-Minute Delivery of Goods ▼
+
+Phase 2 
+7  System Development   One Person 
+Phase 2 
+
+
+8  Examination   Three Persons 
+
+
+9  Systems Configuration   One Person 
+
+ 
+
+10  System Delivery of Goods 
+
+
+11  Acceptance Test 
+
+
+12  Beginning of Mission 
+ 
+EndUser EndUser EndUser 
+ 
+
+Phase 2-minute delivery of goods ▼	The last delivery of goods ▼
