@@ -1,0 +1,47 @@
+			
+	【Step tái hiện】		
+			
+		1.Đăng kí thông ti facility vào 1 room tùy ý	
+			⇒INSERT：SYNC_MODE = 1
+			
+		2.Xóa facility đã đăng kí ở bước 1	
+			⇒UPDATE：SYNC_MODE = 2
+			
+		3.Đăng kí cùng faclility đã đăng kí ở bước 1	
+			⇒INSERT：SYNC_MODE = 1
+			※Ở thời điểm này cùng ID và POP_ID thì đã tạo record vừa có SYNC_MODE=1 vừa có SYNC_MODE=2
+			
+		4.Chạy batch đồng bộ room từ NAVI sang Chintai	
+			
+	【Hiện tượng】		
+			
+		■Bảng ROOM_POP_INFO của NAVI thì Update OK	
+		　Nhưng bảng ROOM_POP_INFO của Chintai thì không được update gì cả	
+			
+	【Nguyên nhân】		
+			
+		■Ở trong câu SELECT của method make_select_room_pop_info của batch 『ph3_n2m2h.pl』	
+		　không có ORDER BY nên SYNC_MODE bị lộn xộn	
+			
+			⇒Về thứ tự xử lí thì phải thực hiện theo thứ tự DELETE ⇒ INSERT
+			
+	【Đề xuất đối ứng】		
+			
+		■Thêm ORDER BY vào câu SELECT và sort theo SYNC_MODE tăng dần trong method make_select_room_pop_info	
+			
+			⇒Khi làm như vậy thì thực hiện xóa toàn bộ thông tin POP có  toàn bộ SYNC_MODE = 2 sau đó mới thực hiện đăng kí/update những thông tin có SYNC_MODE = 1
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
