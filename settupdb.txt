@@ -1,0 +1,2 @@
+(17:52) Loc Huu Le: răng bữa em từ máy e ko connet tới db trong nớ được  
+(17:53) Hanh Ngoc Nguyen: sua cai bind-address: x.x.x.x trong file mysql.conf
