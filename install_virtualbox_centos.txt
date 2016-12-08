@@ -6,3 +6,7 @@ https://www.digitalocean.com/community/tutorials/how-to-install-virtualbox-on-ce
 export KERN_DIR=/usr/src/kernels/2.6.32-358.2.1.el6.x86_64 #Xem truoc ten duong dan
 
 vncpasswd: gcsvn123
+
+VNCSERVERS="2:root"
+VNCSERVERARGS[2]="-geometry 1024x768"
+#2 chu ko phai 0 nhe
