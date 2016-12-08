@@ -1,0 +1,72 @@
+	AUTHOR: LOCLE	||
+	SA TEAM		||
+	20161206	||
+======================
+
+STEP BY STEP: HOW TO START ORACLE DB
+
+STEP1: LOGIN TO SYSTEM
+	user: root
+	pass: gcsvn123
+
+	
+STEP2: login as oracle user
+	$ su - oracle
+	pass if need: Gcsvn123
+
+	(May be you can login to system by oracle user and then you dont need step2)
+
+	
+STEP3: START SERVICE
+	go to oracle home: /u01/app/oracle/product/12.1.0/db_1/bin
+	$ lsnrctl start
+
+	
+STEP4: START DATABASE
+	$ dbstart
+		if it not work you can try: $ sqlplus / as sysdba
+	At SQL> ty startup command:
+		SQL> startup
+	Problem? Maybe you have a problem with this command.
+	NAVI are using a database with name: NAVICDB
+
+	STEP4.1:
+		Go to NAVICDB pfile: /u01/app/oracle/admin/NAVICDB/pfile
+		you can see a file like this: init.ora.023xxxxxxx
+		Then, make a copy of init.ora.023xxxxxxx with name: init.ora
+
+	STEP4.2:
+		SQL> startup pfile=/u01/app/oracle/admin/NAVICDB/pfile/init.ora
+
+Weldone!
+
+
+STEP5: ALTER THE SESION
+	SQL> alter session set container=PDBNAVI;
+
+	
+STEP FINAL: OPEN THE SESION
+	sql> alter pluggable database PDBNAVI open;
+
+
+CONGRATULATION!!!!
+
+YOU CAN CHECK IT TO CONFIRM YOU ARE SUCCESS:
+SQL> select roomid from nms.roomdata where rownum <=10;
+
+ROOMID
+------------------------------
+100001015-001-0302-H
+100001015-001-0308-H
+100001015-001-0309-H
+100001015-001-0401-H
+100001027-001-0902-H
+101000002-1-205-H
+101000002-1-210-H
+101000002-1-308-H
+101000002-1-310-H
+101000003-1-102-H
+
+OMG! THE END
+GOODLuck.
+
