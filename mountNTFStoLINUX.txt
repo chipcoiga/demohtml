@@ -1,0 +1,7 @@
+Step 1: Create a folder
+
+sudo mkdir /media/Skliros_Diskos
+
+Step 2: Mount NTFS filesystem
+
+sudo mount -t ntfs-3g /dev/sdb1 /media/Skliros_Diskos
