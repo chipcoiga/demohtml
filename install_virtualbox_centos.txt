@@ -1,0 +1,2 @@
+vboxdrv.sh: Building VirtualBox kernel modules.
+vboxdrv.sh: failed: Look at /var/log/vbox-install.log to find out what went wrong.
