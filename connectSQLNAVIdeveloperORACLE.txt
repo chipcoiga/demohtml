@@ -1,0 +1,30 @@
+	AUTHOR: LOCLE	||
+	SA TEAM		||
+	20161206	||
+==========================
+
+To connect sql developer to oracledb.
+
+STEP1: START LISENER
+	In oracle user type: oracle@gcsadmin# lsnrctl start
+
+Some time you will see this message (if not you are done):
+	"The listener supports no services"
+	IF you see this message, you only need to setup ORACLE_HOME:
+		oracle@gcsadmin# export ORACLE_HOME=/u01/app/oracle/product/12.1.0/db_1
+
+	then start lisener at STEP1 again.
+	
+	You will see: TNS-01106: Listener using listener name LISTENER has already been started
+
+	WELDONE!
+
+STEP2: CONNECT
+	cONNECTION NAME: 	everything you in your mine
+	USERNAME:		LEASING/NMS/T
+	PASSWORD:		gcsvn123
+	HOSTNAME:		IP OF DATABASE SERVER (172.20.2.75)
+	PORT:			1521
+	SID/SERVICE NAME:	PDBNAVI
+
+Goodluck.
