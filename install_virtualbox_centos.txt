@@ -10,3 +10,7 @@ vncpasswd: gcsvn123
 VNCSERVERS="2:root"
 VNCSERVERARGS[2]="-geometry 1024x768"
 #2 chu ko phai 0 nhe
+
+file => import appliance
+select .ovf file from your virtual machine stored 
+/media/VirtualServer/Tamho01/Export1/Export1.ovf
