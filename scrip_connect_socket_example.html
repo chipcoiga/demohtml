@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello WebSocket</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <script src="jquery.js"></script>
+    <script>
+/*======================================================================*/
+/**
+ * STB java script source code here, below is a part script that I copy from app.js
+ */
+(function () {'use strict';
+
+    function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+    var os = _interopDefault(require('os'));
+    var electron = require('electron');
+    var jetpack = _interopDefault(require('fs-jetpack'));
+    require('bootstrap-show-password');
+
+    // Simple wrapper exposing environment variables to rest of the code.
+
+    // The variables have been written to `env.json` by the build process.
+    var env = jetpack.cwd(__dirname).read('env.json', 'json');
+
+    // Here is the starting point for your application code.
+    // All stuff below is just to show you how it works. You can delete all of it.
+
+    // Use new ES6 modules syntax for everything.
+    console.log('Loaded environment variables:', env);
+
+    var app = electron.remote.app;
+    var appDir = jetpack.cwd(app.getAppPath());
+});
+/*======================================================================*/
+/**
+ * This is function for connect to websocket using Naitve Websocket of brower (without libs)
+ * Before, we check state and make Wrapper
+ * 
+ */
+(function(nameSpace) {
+  function createMethod(method, options, stateCallback) {
+    var that = this;
+    this[method] = function() {
+      if (stateCallback && stateCallback.apply) {
+        stateCallback(method);
+      }
+      console.info(method);
+      if (options[method] && options[method].apply) {
+        options[method].apply(that, arguments);
+      }
+    };
+  }
+
+  function SocketWrapper(options) {
+    var ws,
+      events = ['onopen', 'onmessage', 'onclose', 'onerror'],
+      i, len, prop = {
+        opened: false,
+        closed: false,
+        error: false
+      },
+      method;
+
+    if (typeof options === 'undefined' || !options) {
+      throw 'ArgumentException: please add default constructor options';
+    }
+    
+    this.queue = [];
+    
+    this.onEventTrigger = function(eventName) {
+      var i, len;
+      if (eventName === 'onopen') {
+        prop.opened = true;
+        prop.closed = false;
+        // openend send queue
+        if (this.queue.length > 0) {
+          for (i = this.queue.length; --i >= 0;) {
+            this.send.apply(this, this.queue[0]);
+            this.queue.splice(0, 1);
+          }
+        }
+      }
+      if (eventName === 'onerror') {
+        prop.error = true;
+      }
+      if (eventName === 'onclosed') {
+        prop.opened = false;
+        prop.closed = true;
+      }
+    };
+
+    this.init = function() {
+      var cb = this.onEventTrigger.bind(this);
+      ws = new WebSocket(options.url);
+
+      for (i = 0; i < events.length; i++) {
+        method = events[i];
+        createMethod.apply(ws, [method, options, cb]);
+      }
+    };
+
+    this.send = function() {
+      if (prop.closed) {
+        throw 'InvalidOperation: Cannot send messages to a closed Websocket!';
+      }
+      if (!prop.opened) {
+        this.queue.push(arguments);
+      } else {
+        ws.send.apply(ws, arguments);
+      }
+    };
+    
+    this.init();
+    return this;
+  }
+
+  window.SocketWrapper = SocketWrapper;
+}(window));
+
+/*======================================================================*/
+/**
+ * Handle websocket: when connect success, when receive a message, when close socket and when have an error
+ */
+var socket = new window.SocketWrapper({
+  url: 'ws://localhost:8080/stb-ws',
+  onopen: function() {
+      console.log("opened");
+    this.send('Loc', 'hi');
+  },
+  onmessage: function(arguments) {
+    console.log(arguments)
+  },
+  onclose: function() {
+    socket = null;
+  },
+  onerror: function(arguments) {
+    console.log('error occured, oh no!');
+    console.error(arguments);
+  }
+});
+socket.send('i am message send to soon, but since i check the state of the ws object, i will be queued and send when appropriate');
+/*======================================================================*/
+    </script>
+    
+</head>
+<body>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="connect">WebSocket connection:</label>
+                    <button id="connect" class="btn btn-default" type="submit">Connect</button>
+                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="name">What is your name?</label>
+                    <input type="text" id="name" class="form-control" placeholder="Your name here...">
+                </div>
+                <button id="send" class="btn btn-default" type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Greetings</th>
+                </tr>
+                </thead>
+                <tbody id="greetings">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </form>
+</div>
+</body>
+</html>
